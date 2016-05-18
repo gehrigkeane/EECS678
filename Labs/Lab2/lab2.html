@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="en-us" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Untitled 1</title>
+<style type="text/css">
+.auto-style1 {
+	font-size: xx-large;
+}
+.auto-style2 {
+	font-size: large;
+}
+</style>
+</head>
+
+<body>
+
+<table style="width: 100%">
+	<tr>
+		<td bgcolor="#C0C0C0" class="auto-style1"><strong>Lab 2</strong></td>
+	</tr>
+</table>
+<p>
+<span style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: large; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); display: inline !important; float: none;">
+In this lab, we cover how to use the debugger with the bash shell. You will need 
+to fix a segmentation fault in the bash shell using GDB and submit a 1 page 
+report on how you solved this problem.<span class="Apple-converted-space">&nbsp;</span></span></p>
+<table style="width: 100%">
+	<tr>
+		<td bgcolor="#C0C0C0" class="auto-style2"><strong>Lab Materials</strong></td>
+	</tr>
+</table>
+<ul>
+	<li><a href="lab2/GDBLab.pdf">Slides</a></li>
+	<li><a href="lab2/eecs678-gdb-lab.tar.gz">Lab materials</a></li>
+</ul>
+<p>&nbsp;</p>
+<table style="width: 100%">
+	<tr>
+		<td bgcolor="#C0C0C0" class="auto-style2"><strong>Assignment</strong></td>
+	</tr>
+</table>
+
+<span style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); display: inline !important; float: none;">
+The bash program produces a segmentation fault with the test script I've 
+provided:</span><br style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);" />
+<pre style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">./bash-4.2/bash finder.sh bash-4.2 execute 20
+find $1 -name '*'.[ch]
+
+make: *** [test] Segmentation fault (core dumped)
+</pre>
+<br style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);" />
+<span style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); display: inline !important; float: none;">
+Your task for this lab is to remove the segmentation fault with the aid of a 
+debugger. When you are finished, the test output should print:</span><br style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);" />
+<pre style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">./bash-4.2/bash finder.sh ./bash-4.2 execute 20
+find $1 -name '*'.[ch]
+xargs grep -c $2
+sort -t : +1.0 -2.0 --numeric --reverse
+head --lines=$3
+./bash-4.2/execute_cmd.c:187
+./bash-4.2/builtins/builtins.c:54
+./bash-4.2/shell.c:49
+./bash-4.2/bashline.c:26
+./bash-4.2/builtins/evalstring.c:20
+./bash-4.2/trap.c:13
+./bash-4.2/y.tab.c:12
+./bash-4.2/subst.c:12
+./bash-4.2/eval.c:11
+./bash-4.2/builtins/evalfile.c:9
+./bash-4.2/flags.c:8
+./bash-4.2/variables.c:7
+./bash-4.2/sig.c:6
+./bash-4.2/pcomplete.c:6
+./bash-4.2/lib/readline/isearch.c:6
+./bash-4.2/findcmd.c:6
+./bash-4.2/jobs.c:5
+./bash-4.2/builtins/common.h:5
+./bash-4.2/lib/readline/bind.c:4
+./bash-4.2/execute_cmd.h:4
+</pre>
+<span style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); display: inline !important; float: none;">
+After you debug the issue and you are sure your output is correct, complete a 
+short report that answers the following questions:</span><ol style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);" type="2">
+	<li>What is wrong with the original code that eventually causes it to crash? 
+	(Obviously, the program fails becuase of an invalid memory reference 
+	producing a segmentation fault -- what programming error led to the seg 
+	fault?)</li>
+	<li>Describe how you diagnosed the problem with the original code. If you 
+	used GDB, which commands did you find most helpful? If you did not, what 
+	tools were most helpful in diagnosing the problem?</li>
+	<li>Describe how your solution fixes the problem. Are you confident your 
+	solution is correct?</li>
+</ol>
+<span style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); display: inline !important; float: none;">
+You also need to tar up your lab for submission. For this step, you should use 
+the 'tar' target included in the lab's Makefile. Change the STUDENT_ID variable 
+in the Makefile to your student ID and type:</span><pre style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">    make tar
+	  </pre>
+<p title="Using Debuggers"><a href="index.html">&lt; Back to the Lab Home Page</a></p>
+
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="en-us" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Untitled 1</title>
+<style type="text/css">
+.auto-style1 {
+        font-size: xx-large;
+}
+.auto-style2 {
+        font-size: large;
+}
+</style>
+</head>
+
+<body title="Lab">
+
+<table style="width: 100%">
+        <tr>
+                <td bgcolor="#C0C0C0" class="auto-style1">
+                <b style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: x-large; font-style: normal; font-variant: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: -webkit-left; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(204, 204, 204);">
+                Lab 9: Memory Mapped I/O</b></td>
+        </tr>
+</table>
+<p style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: large; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">
+In this lab, we will learn about techniques available to application programmers
+for using logical address spaces that are not as widely known or used as they
+probably should be.</p>
+<p style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: large; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">
+Issues addressed by this lab include:</p>
+<ul style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: large; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">
+        <li>Understand the concept of Memory Mapped I/O</li>
+        <li>Understand the difference between accessing data in a file using<span class="Apple-converted-space">&nbsp;</span><strong>read/write</strong><span class="Apple-converted-space">&nbsp;</span>system
+        calls and using Memory Mapping</li>
+</ul>
+<p>&nbsp;</p>
+<table style="width: 100%">
+        <tr>
+                <td bgcolor="#C0C0C0" class="auto-style2"><strong>Lab Materials</strong></td>
+        </tr>
+</table>
+<ol>
+        <li><a href="memio/MemoryMappedIO.pdf">Slides</a></li>
+        <li><a href="memio/eecs678-mmio-lab.tar.gz">Lab Files</a></li>
+</ol>
+<table style="width: 100%">
+        <tr>
+                <td bgcolor="#C0C0C0" class="auto-style2"><strong>Assignment</strong></td>
+        </tr>
+</table>
+
+<p style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">
+For this lab, you should complete the implementation of the<span class="Apple-converted-space">&nbsp;</span><em>memmap</em><span class="Apple-converted-space">&nbsp;</span>program.
+This program should create a memory mapping of the source and destination files.
+Copy the source file using memory operations and compare this approach to the<span class="Apple-converted-space">&nbsp;</span><strong>read/write</strong><span class="Apple-converted-space">&nbsp;</span>system
+call approach taken by the<span class="Apple-converted-space">&nbsp;</span><em>read_write</em><span class="Apple-converted-space">&nbsp;</span>program.
+Use the<span class="Apple-converted-space">&nbsp;</span><em>time</em><span class="Apple-converted-space">&nbsp;</span>command
+in comparing the work done by the two approaches under different operating
+conditions.</p>
+<p style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">
+We should be able to build the your solution<span class="Apple-converted-space">&nbsp;</span><em>memmap</em><span class="Apple-converted-space">&nbsp;</span>program
+using the Makefile submitted in your solution TAR file.</p>
+<p style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">
+&nbsp;</p>
+<table style="width: 100%">
+        <tr>
+                <td bgcolor="#C0C0C0" class="auto-style2"><strong>What to Hand in</strong></td>
+        </tr>
+</table>
+<p style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">
+After you have finished your implementation, you need to complete a short report
+that answers the following questions:</p>
+<ol style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">
+        <li>The time required to copy the file using<span class="Apple-converted-space">&nbsp;</span><em>read_write</em><span class="Apple-converted-space">&nbsp;</span>varies
+        with the size of the buffer specified. Smaller buffer sizes take longer. The
+        time required for<span class="Apple-converted-space">&nbsp;</span><em>memmap</em><span class="Apple-converted-space">&nbsp;</span>varies
+        much less regardless of how you perform the copy. Discuss why this is, and
+        in your discussion consider the influence of: (1) the overhead of the read()
+        and write() system calls and (2) the number of times the data is copied
+        under the two methods.<span class="Apple-converted-space">&nbsp;</span><b>This
+        question is worth 20 points.</b></li>
+        <li>When you use the<span class="Apple-converted-space">&nbsp;</span><em>read_write</em><span class="Apple-converted-space">&nbsp;</span>command
+        as supplied, the size of the copied file varies with the size of the buffer
+        specified. When you use the<span class="Apple-converted-space">&nbsp;</span><em>memmap</em><span class="Apple-converted-space">&nbsp;</span>command
+        implemented the size of the source and destination files will match exactly.
+        This is because there is a mistake in the<span class="Apple-converted-space">&nbsp;</span><em>read_write</em><span class="Apple-converted-space">&nbsp;</span>code.
+        What is the mistake, and how can it be corrected?</li>
+</ol>
+<p style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">
+Finally, submit the tar file containing your lab directory as
+well an electronic copy of your report (pdf please). The final lab submissions
+will be graded (by me) outside of class.</p>
+<p style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">
+For this lab, you will also submit to me a tar file containing your
+lab directory. I should be able to build, run, and test your submission using
+the steps described above. Please name the tarfile appropriately (e.g.
+lastname-lab11.tar.gz) so I do not have to distinguish between several tar files
+with the same name. Consider using the<span class="Apple-converted-space">&nbsp;</span><font face="arial">tar</font><span class="Apple-converted-space">&nbsp;</span>target
+provided in the Makefile to build your tarfile.</p>
+<p>&nbsp;</p>
+<p><a href="index.html">&lt; Back to the Lab Home Page</a></p>
+
+</body>
+
+</html>
